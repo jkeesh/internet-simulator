@@ -9,43 +9,58 @@
         <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
         <script type="text/javascript" src="firebase_logic.js"></script>
 
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
         <title>Internet Simulator Test</title>
     </head>
     <body>
-    	Sign In:<input type="text" placeholder="Name" id="username">
-            <input type="submit" value="Login" id="login-button">
 
-    	<br>
-    	<br>
-		<div id="nameDisplay"></div>
-		<div id="usersOnline"></div>
-		<div id="sendMessageDiv">
-			To: <select id="toUserSelect"></select>
-			<input type="text" name="message" placeholder="message" id="message">
-			<input type="submit" value="Send" id="sendButton">
-		</div>
+        <div class="container-fluid">
+            <div class="col-md-6">
+            	Sign In:<input type="text" placeholder="Name" id="username" class="form-control">
+                    <input type="submit" value="Login" id="login-button" class="btn btn-primary">
 
-    	<h3>Inbox</h3>
-    		<table id="inboxTable" style="width:100%">
-    			<tr>
-    				<th>From</th>
-    				<th>Message</th>
-    				<th>Decoded</th>
-    			</tr>
-    		</table>
+            	<br>
+            	<br>
+        		<div id="nameDisplay"></div>
+        		<div id="usersOnline"></div>
+        		<div id="sendMessageDiv">
+        			To: <select id="toUserSelect"></select>
+        			<input type="text" name="message" placeholder="message" id="message" class="form-control">
+        			<input type="submit" value="Send" id="sendButton" class="btn btn-primary">
+        		</div>
 
-        <h3>Translations</h3>
-        <input type="text" placeholder="Input" id="translator-input">
-        <input type="text" placeholder="Output" id="translator-output">
-        <button id="add-translation">Add</button>
-        <br>
-        <table id="translation-table">
-            <thead>
-                <th>Key</th>
-                <th>Value</th>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+            	<h3>Inbox</h3>
+            		<table id="inboxTable" style="width:100%" class="table">
+            			<tr>
+            				<th>From</th>
+            				<th>Message</th>
+            				<th>Decoded</th>
+            			</tr>
+            		</table>
+
+                <h3>Translations</h3>
+                <input type="text" placeholder="Input" id="translator-input" class="form-control">
+                <input type="text" placeholder="Output" id="translator-output" class="form-control">
+                <button id="add-translation" class="btn btn-primary">Add</button>
+                <br>
+                <table id="translation-table" class="table">
+                    <thead>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </body>
 </html>
