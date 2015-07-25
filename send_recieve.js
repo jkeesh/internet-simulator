@@ -40,6 +40,11 @@ function addMessageToDisplay(incomingMessageObject){
 	$(lastInboxRow).after(newRow);
 }
 
+/*
+* Given a username creates an html select option
+*
+* @param: user - string indicating the user name
+*/
 function createUserSelectRow(user){
 	return "<option value='" + user + "'>" + user + "</option>";
 }

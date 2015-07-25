@@ -22,17 +22,34 @@ Translator = (function() {
 
     /** Translate a given message based on our rules.
      *
-     * If a translation exists, apply it.
-     * Otherwise, return the original mesage.
+     * It loops through the message left to right and
+     * applies any translations that fit until it ends.
+     * If you get stuck at any point, we skip a character
+     * and try again.
      *
      * @param message: value to translate
      * returns: translated version of the value
      */
     var translate = function(message) {
-        if (translations.hasOwnProperty(message)) {
-            return translations[message];
+        var result = "";
+
+        while (message.length > 0) {
+            var madeChange = false;
+            for (key in translations) {
+                if (message.indexOf(key) == 0) {
+                    result += translations[key];
+                    message = message.substr(key.length);
+                    madeChange = true;
+                    break;
+                }
+            }
+            if (!madeChange) {
+                result += message[0];
+                message = message.substr(1);
+            }
         }
-        return message;
+        // return translated result plus the rest of the original message
+        return result + message;
     }
 
     /** Display the translations we have set in a table.
