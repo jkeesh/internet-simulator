@@ -5,10 +5,34 @@
     	<meta http-equiv="Content-Language" content="en">
         <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="translate.js"></script>
+        <script type="text/javascript" src="send.js"></script>
         <title>Internet Simulator Test</title>
     </head>
     <body>
-    	<h1>Sign in to the CodeHS INTERNET!</h1>
+    	<input type="text" placeholder="Name" id="username">
+    	<br>
+    	<center>
+    		<div id="nameDisplay"></div>
+    		<div id="usersOnline"></div>
+    		<div id="sendMessageDiv">
+    			To: <select id="toUserSelect"></select>   
+				<input type="text" name="message" placeholder="message" id="message">
+    			<input type="submit" value="Send" id="sendButton">
+    		</div>
+
+
+    		<h2>Inbox</h2>
+    		<table id="inboxTable" style="width:100%">
+    			<tr>
+    				<th>From</th>
+    				<th>Message</th>	
+    				<th>Decoded</th>
+    			</tr>
+    		</table>
+
+
+    	</center>
+    	
 
     	
     </body>
