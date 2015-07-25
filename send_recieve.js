@@ -2,11 +2,37 @@ var users = [
 	"Calvin", "Jeremy", "Zach"
 ];
 
-var inboxTable = "#inboxTable";
-var lastInboxRow = "#inboxTable tr:last";
-var sendButton = "#sendButton";
-var toUserSelect = "#toUserSelect";
+/*
+* Constants for JQuery handles
+*/
+var INBOX_TABLE = "#inboxTable";
+var LAST_INBOX_ROW = "#inboxTable tr:last";
+var SEND_BUTTON = "#sendButton";
+var TO_USER_SELECT = "#toUserSelect";
+var MESSAGE = "#message";
+var USERNAME = "#username";
 
+/*
+* Given a username creates an option for that user that can be
+* placed in an html select element.
+*
+* @param: user - string indicating the user name
+*/
+function createUserRow(user){
+	return "<option value='" + user + "'>" + user + "</option>";
+}
+
+/*
+* Given a from user, a message, and a decoded message, create an html table row
+* with that information
+*
+* @param from - string indicating from user
+* @param message - string indicating original message
+* @param decodedMessage - string indicating decoded message
+*/
+function createInboxTableRow(from, message, decodedMessage){
+	return "<tr><td>" + from + "</td><td>" + message + "</td><td>" + decoded + "</td></tr>";
+}
 
 function sendMessage(from, to, message){
 	console.log("From: " + from + "\nTo: " + to + "\nMessage: " + message);
@@ -17,9 +43,9 @@ function sendMessage(from, to, message){
 * to the 'to' user from the 'from' user
 */
 function send(){
-	var from = $("#username").val();
-	var to = $("#toUserSelect").val();
-	var message = $("#message").val();
+	var from = $(USERNAME)).val();
+	var to = $(TO_USER_SELECT).val();
+	var message = $(MESSAGE).val();
 	sendMessage(from, to, message);
 };
 
@@ -34,23 +60,14 @@ function send(){
 function addMessageToDisplay(incomingMessageObject){
 	var from = incomingMessageObject.from;
 	var message = incomingMessageObject.message;
-	var decoded = Translator.translate(message);
-	var newRow = "<tr><td>" + from + "</td><td>" + message + "</td></tr>";
-	$(lastInboxRow).after(newRow);
-}
-
-/*
-* Given a username creates an html select option
-*
-* @param: user - string indicating the user name
-*/
-function createUserSelectRow(user){
-	return "<option value='" + user + "'>" + user + "</option>";
+	var decodedMessage = Translator.translate(message);
+	var newRow = createInboxTableRow(from, message, decodedMessage);
+	$(LAST_INBOX_ROW).after(newRow);
 }
 
 $(document).ready(function(){
-	$(sendButton).click(send);
+	$(SEND_BUTTON).click(send);
 	for(var index in users){
-		$(toUserSelect).append(createUserSelectRow(users[index]));
+		$(TO_USER_SELECT).append(createUserRow(users[index]));
 	}
 });
