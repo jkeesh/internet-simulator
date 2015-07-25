@@ -1,6 +1,5 @@
-var users = [
-	"Calvin", "Jeremy", "Zach"
-];
+//List of users currently online
+var users = [];
 
 /*
 * Constants for JQuery handles
@@ -44,7 +43,7 @@ function sendMessage(from, to, message){
 * to the 'to' user from the 'from' user
 */
 function send(){
-	var from = $(USERNAME)).val();
+	var from = $(USERNAME).val();
 	var to = $(TO_USER_SELECT).val();
 	var message = $(MESSAGE).val();
 	sendMessage(from, to, message);
@@ -66,9 +65,27 @@ function addMessageToDisplay(incomingMessageObject){
 	$(LAST_INBOX_ROW).after(newRow);
 }
 
-$(document).ready(function(){
-	$(SEND_BUTTON).click(send);
+/*
+* Populate the user select element with all
+* names from the users array
+*/
+function updateUserSelect(){
+	$(TO_USER_SELECT).empty();
 	for(var index in users){
 		$(TO_USER_SELECT).append(createUserRow(users[index]));
 	}
+}
+
+/*
+* Add an online user to the display
+*
+* @param: username - (string) name of the online user
+*/
+function addUserToDisplay(username){
+    users.push(username);
+    updateUserSelect();
+}
+
+$(document).ready(function(){
+	$(SEND_BUTTON).click(send);
 });

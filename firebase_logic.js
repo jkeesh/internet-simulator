@@ -40,11 +40,7 @@ function startFirebase(username){
     name: username
   })
 
-  function addUserToDisplay(username){
-    console.log("new user " + username);
-
-    // todo
-  }
+  
 
   myReceivedRef.on("child_added", function(snapshot, prevChildKey) {
     var message = snapshot.val();
