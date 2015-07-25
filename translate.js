@@ -58,3 +58,17 @@ Translator = (function() {
         displayTranslations: displayTranslations
     }
 }());
+
+
+// Set up the inputs for adding translations on the page
+$(document).ready(function() {
+    $('#add-translation').on('click', function() {
+        var input = $('#translator-input').val();
+        var output = $('#translator-output').val();
+        Translator.addTranslation(input, output);
+
+        // clear the boxes
+        $('#translator-input').val('');
+        $('#translator-output').val('');
+    });
+});
