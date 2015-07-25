@@ -5,23 +5,22 @@
     	<meta http-equiv="Content-Language" content="en">
         <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="translate.js"></script>
-        <script type="text/javascript" src="send.js"></script>
+        <script type="text/javascript" src="send_recieve.js"></script>
         <title>Internet Simulator Test</title>
     </head>
     <body>
-    	<input type="text" placeholder="Name" id="username">
+    	Sign In:<input type="text" placeholder="Name" id="username">
     	<br>
-    	<center>
-    		<div id="nameDisplay"></div>
-    		<div id="usersOnline"></div>
-    		<div id="sendMessageDiv">
-    			To: <select id="toUserSelect"></select>   
-				<input type="text" name="message" placeholder="message" id="message">
-    			<input type="submit" value="Send" id="sendButton">
-    		</div>
+    	<br>
+		<div id="nameDisplay"></div>
+		<div id="usersOnline"></div>
+		<div id="sendMessageDiv">
+			To: <select id="toUserSelect"></select>   
+			<input type="text" name="message" placeholder="message" id="message">
+			<input type="submit" value="Send" id="sendButton">
+		</div>
 
-
-    		<h2>Inbox</h2>
+    	<h3>Inbox</h3>
     		<table id="inboxTable" style="width:100%">
     			<tr>
     				<th>From</th>
@@ -30,10 +29,18 @@
     			</tr>
     		</table>
 
-
-    	</center>
-    	
-
-    	
+        <h3>Translations</h3>
+        <input type="text" placeholder="Input" id="translator-input">
+        <input type="text" placeholder="Output" id="translator-output">
+        <button id="add-translation">Add</button>
+        <br>
+        <table id="translation-table">
+            <thead>
+                <th>Key</th>
+                <th>Value</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </body>
 </html>

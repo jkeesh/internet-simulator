@@ -1,3 +1,37 @@
-test
 
-test2
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<h1>Firebase tester</h1>
+
+<script>
+
+function sendMessage(from, to, message){
+	mySentRef.push({
+		"from": from,
+		"to": to,
+		"message": message
+	});
+
+	var receivingUserRef = usersRef.child(to);
+	var incomingRef = receivingUserRef.child("received");
+	incomingRef.push({
+		"from": from,
+		"to": to,
+		"message": message
+	});
+}
+
+var username = "Jeremy";
+
+var myFirebaseRef = new Firebase("https://internetsimulator.firebaseio.com/");
+var usersRef = myFirebaseRef.child("users");
+var myUserRef = usersRef.child(username);
+var mySentRef = myUserRef.child("sent");
+
+
+sendMessage(username, "Zach", "11010101");
+sendMessage(username, "Zach", "11101011");
+sendMessage(username, "Calvin", "11110111");
+
+</script>
