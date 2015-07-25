@@ -7,6 +7,7 @@
 <script>
 
 function sendMessage(from, to, message){
+	console.log("Sent a message from " + from + " to " + to + ": " + message);
 	mySentRef.push({
 		"from": from,
 		"to": to,
@@ -28,10 +29,34 @@ var myFirebaseRef = new Firebase("https://internetsimulator.firebaseio.com/");
 var usersRef = myFirebaseRef.child("users");
 var myUserRef = usersRef.child(username);
 var mySentRef = myUserRef.child("sent");
+var myReceivedRef = myUserRef.child("received");
 
 
 sendMessage(username, "Zach", "11010101");
 sendMessage(username, "Zach", "11101011");
 sendMessage(username, "Calvin", "11110111");
+
+function addMessageToDisplay(msg){
+	console.log(msg);
+}
+
+myReceivedRef.on("child_added", function(snapshot, prevChildKey) {
+  var message = snapshot.val();
+  console.log("RECEIVED MESSAGE");
+  addMessageToDisplay(message);
+});
+
+var usersList = [];
+
+myFirebaseRef.on("child_added", function(snapshot, prevChildKey) {
+
+  var newPost = snapshot.val();
+  console.log(newPost);
+
+  for(var user in newPost){
+  	usersList.push(user);
+  }
+
+});
 
 </script>
