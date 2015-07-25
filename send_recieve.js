@@ -31,7 +31,7 @@ function createUserRow(user){
 * @param decodedMessage - string indicating decoded message
 */
 function createInboxTableRow(from, message, decodedMessage){
-	return "<tr><td>" + from + "</td><td>" + message + "</td><td>" + decoded + "</td></tr>";
+	return "<tr><td>" + from + "</td><td>" + message + "</td><td>" + decodedMessage + "</td></tr>";
 }
 
 function sendMessage(from, to, message){
