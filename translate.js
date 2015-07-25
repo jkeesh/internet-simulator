@@ -24,6 +24,8 @@ Translator = (function() {
      *
      * It loops through the message left to right and
      * applies any translations that fit until it ends.
+     * If you get stuck at any point, we skip a character
+     * and try again.
      *
      * @param message: value to translate
      * returns: translated version of the value
@@ -31,7 +33,7 @@ Translator = (function() {
     var translate = function(message) {
         var result = "";
 
-        while (true) {
+        while (message.length > 0) {
             var madeChange = false;
             for (key in translations) {
                 if (message.indexOf(key) == 0) {
@@ -42,7 +44,8 @@ Translator = (function() {
                 }
             }
             if (!madeChange) {
-                break;
+                result += message[0];
+                message = message.substr(1);
             }
         }
         // return translated result plus the rest of the original message
