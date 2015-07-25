@@ -44,7 +44,7 @@ function sendMessage(from, to, message){
 * to the 'to' user from the 'from' user
 */
 function send(){
-	var from = $(USERNAME)).val();
+	var from = $(USERNAME).val();
 	var to = $(TO_USER_SELECT).val();
 	var message = $(MESSAGE).val();
 	sendMessage(from, to, message);
