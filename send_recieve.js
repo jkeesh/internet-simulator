@@ -10,6 +10,7 @@ var toUserSelect = "#toUserSelect";
 
 function sendMessage(from, to, message){
 	console.log("From: " + from + "\nTo: " + to + "\nMessage: " + message);
+	firebaseSendMessage(from, to, message);
 };
 
 /*
